@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".ChooseCommunity">
+
+    <LinearLayout
+        android:id="@+id/chooseInterestLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/choose_your_interests"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="#FFF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/cuisineLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/chooseInterestLayout">
+
+        <ImageView
+            android:id="@+id/cuisineSelected"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/cuisine_image"
+            android:scaleType="fitCenter"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:layout_marginStart="30dp"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/cuisineText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="@string/cuisine"
+            android:textColor="#000"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/musicLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/cuisineLayout">
+
+        <ImageView
+            android:id="@+id/musicSelected"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/music_icon"
+            android:scaleType="fitCenter"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:layout_marginStart="30dp"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/musicText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="@string/music"
+            android:textColor="#000"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/sportsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/musicLayout">
+
+        <ImageView
+            android:id="@+id/sportsSelected"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/sports_image"
+            android:scaleType="fitCenter"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:layout_marginStart="30dp"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/sportsText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="@string/sports"
+            android:textColor="#000"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/generalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/sportsLayout">
+
+        <ImageView
+            android:id="@+id/generalSelected"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/general_icon"
+            android:scaleType="fitCenter"
+            android:maxWidth="30dp"
+            android:maxHeight="30dp"
+            android:layout_marginStart="30dp"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:id="@+id/generalText"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="@string/general"
+            android:textColor="#000"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_choosing"
+        android:background="@drawable/btn_transparent"
+        android:padding="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintTop_toBottomOf="@id/generalLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:textColor="#FFF"
+        android:drawableEnd="@drawable/arrow_icon"
+        android:textStyle="bold"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

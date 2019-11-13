@@ -10,4 +10,16 @@
     <string name="username">Username</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
+    <string name="choose_your_interests">Choose your interests</string>
+    <string name="cuisine">Cuisine</string>
+    <string name="music">Music</string>
+    <string name="sports">Sports</string>
+    <string name="general">General</string>
+    <string name="continue_choosing">Continue</string>
+    <string name="choose_your_nationality">Choose your communities</string>
+    <string name="turkish">Turkish</string>
+    <string name="indian">Indian</string>
+    <string name="chinese">Chinese</string>
+    <string name="pakistani">Pakistani</string>
+    <string name="japanese">Japanese</string>
 </resources>
