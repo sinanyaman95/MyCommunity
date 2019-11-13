@@ -6,4 +6,8 @@
     <string name="welcome_to_my_community">Welcome to My Community!</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="welcome">Welcome to My Community</string>
+    <string name="username">Username</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
 </resources>
