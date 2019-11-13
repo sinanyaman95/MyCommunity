@@ -61,6 +61,7 @@ public class ChooseNationality extends AppCompatActivity {
                     turkishSelected.setImageResource(R.drawable.check_image);
                 }else{
                     turkishLayout.setBackgroundColor(Color.WHITE);
+                    turkishSelected.setImageDrawable(null);
                 }
             }
         });
@@ -74,6 +75,7 @@ public class ChooseNationality extends AppCompatActivity {
                     indianSelected.setImageResource(R.drawable.check_image);
                 }else{
                     indianLayout.setBackgroundColor(Color.WHITE);
+                    indianSelected.setImageDrawable(null);
                 }
             }
         });
@@ -87,6 +89,7 @@ public class ChooseNationality extends AppCompatActivity {
                     chineseSelected.setImageResource(R.drawable.check_image);
                 }else{
                     chineseLayout.setBackgroundColor(Color.WHITE);
+                    chineseSelected.setImageDrawable(null);
                 }
             }
         });
@@ -100,6 +103,7 @@ public class ChooseNationality extends AppCompatActivity {
                     pakistaniSelected.setImageResource(R.drawable.check_image);
                 }else{
                     pakistaniLayout.setBackgroundColor(Color.WHITE);
+                    pakistaniSelected.setImageDrawable(null);
                 }
             }
         });
@@ -113,6 +117,7 @@ public class ChooseNationality extends AppCompatActivity {
                     japaneseSelected.setImageResource(R.drawable.check_image);
                 }else{
                     japaneseLayout.setBackgroundColor(Color.WHITE);
+                    japaneseSelected.setImageDrawable(null);
                 }
             }
         });

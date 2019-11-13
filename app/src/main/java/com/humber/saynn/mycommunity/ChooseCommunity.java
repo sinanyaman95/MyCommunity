@@ -71,6 +71,7 @@ public class ChooseCommunity extends AppCompatActivity {
                     musicSelected.setImageResource(R.drawable.check_image);
                 }else{
                     musicLayout.setBackgroundColor(Color.WHITE);
+                    musicSelected.setImageDrawable(null);
                 }
             }
         });
@@ -84,6 +85,7 @@ public class ChooseCommunity extends AppCompatActivity {
                     sportsSelected.setImageResource(R.drawable.check_image);
                 }else{
                     sportsLayout.setBackgroundColor(Color.WHITE);
+                    sportsSelected.setImageDrawable(null);
                 }
             }
         });
@@ -97,6 +99,7 @@ public class ChooseCommunity extends AppCompatActivity {
                     generalSelected.setImageResource(R.drawable.check_image);
                 }else{
                     generalLayout.setBackgroundColor(Color.WHITE);
+                    generalSelected.setImageDrawable(null);
                 }
             }
         });
