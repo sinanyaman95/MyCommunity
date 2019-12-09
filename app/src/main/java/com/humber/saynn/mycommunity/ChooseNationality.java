@@ -51,8 +51,10 @@ public class ChooseNationality extends AppCompatActivity {
         pakistaniSelected = findViewById(R.id.pakistaniSelectedImage);
         japaneseSelected = findViewById(R.id.japaneseSelectedImage);
 
+        continueButton = findViewById(R.id.continueButton);
+
         turkishText = findViewById(R.id.turkishText);
-        turkishText.setOnClickListener(new View.OnClickListener() {
+        turkishLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)turkishLayout.getBackground();
@@ -66,7 +68,7 @@ public class ChooseNationality extends AppCompatActivity {
             }
         });
         indianText = findViewById(R.id.indianText);
-        indianText.setOnClickListener(new View.OnClickListener() {
+        indianLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)indianLayout.getBackground();
@@ -80,7 +82,7 @@ public class ChooseNationality extends AppCompatActivity {
             }
         });
         chineseText = findViewById(R.id.chineseText);
-        chineseText.setOnClickListener(new View.OnClickListener() {
+        chineseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)chineseLayout.getBackground();
@@ -94,7 +96,7 @@ public class ChooseNationality extends AppCompatActivity {
             }
         });
         pakistaniText = findViewById(R.id.pakistaniText);
-        pakistaniText.setOnClickListener(new View.OnClickListener() {
+        pakistaniLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)pakistaniLayout.getBackground();
@@ -108,7 +110,7 @@ public class ChooseNationality extends AppCompatActivity {
             }
         });
         japaneseText = findViewById(R.id.japaneseText);
-        japaneseText.setOnClickListener(new View.OnClickListener() {
+        japaneseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)japaneseLayout.getBackground();

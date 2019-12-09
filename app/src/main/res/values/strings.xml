@@ -22,4 +22,5 @@
     <string name="chinese">Chinese</string>
     <string name="pakistani">Pakistani</string>
     <string name="japanese">Japanese</string>
+    <string name="send_new_password">Send New Password</string>
 </resources>

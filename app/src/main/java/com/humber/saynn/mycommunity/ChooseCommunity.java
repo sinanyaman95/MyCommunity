@@ -48,7 +48,7 @@ public class ChooseCommunity extends AppCompatActivity {
         generalSelected = findViewById(R.id.generalSelected);
 
         cuisineText = findViewById(R.id.cuisineText);
-        cuisineText.setOnClickListener(new View.OnClickListener() {
+        cuisineLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)cuisineLayout.getBackground();
@@ -62,7 +62,7 @@ public class ChooseCommunity extends AppCompatActivity {
             }
         });
         musicText = findViewById(R.id.musicText);
-        musicText.setOnClickListener(new View.OnClickListener() {
+        musicLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)musicLayout.getBackground();
@@ -76,7 +76,7 @@ public class ChooseCommunity extends AppCompatActivity {
             }
         });
         sportsText = findViewById(R.id.sportsText);
-        sportsText.setOnClickListener(new View.OnClickListener() {
+        sportsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)sportsLayout.getBackground();
@@ -90,7 +90,7 @@ public class ChooseCommunity extends AppCompatActivity {
             }
         });
         generalText = findViewById(R.id.generalText);
-        generalText.setOnClickListener(new View.OnClickListener() {
+        generalLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ColorDrawable bgColor = (ColorDrawable)generalLayout.getBackground();
