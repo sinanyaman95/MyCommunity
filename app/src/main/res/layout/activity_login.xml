@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/emailEditTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -48,12 +48,12 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/password"
-        app:layout_constraintTop_toBottomOf="@id/emailEditText"
+        app:layout_constraintTop_toBottomOf="@id/emailEditTextLogin"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:textColor="#FFF"/>
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/passwordEditTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -65,7 +65,7 @@
         android:id="@+id/buttonsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/passwordEditText"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextLogin"
         app:layout_constraintBottom_toTopOf="@id/forgotPasswordLayout"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
@@ -87,12 +87,13 @@
         <Button
             android:id="@+id/signInButton"
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
             android:background="@drawable/btn_rounded"
             android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-            android:textColor="#FFF"/>
+            android:textColor="#FFF"
+            android:onClick="signIn"/>
 
 
 
