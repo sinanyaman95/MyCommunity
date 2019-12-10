@@ -23,4 +23,6 @@
     <string name="pakistani">Pakistani</string>
     <string name="japanese">Japanese</string>
     <string name="send_new_password">Send New Password</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

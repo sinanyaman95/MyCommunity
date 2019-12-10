@@ -11,8 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ForgotPassword"
-            android:theme="@style/AppTheme.PopUpTheme"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:theme="@style/AppTheme.PopUpTheme" />
         <activity android:name=".ChooseNationality" />
         <activity android:name=".ChooseCommunity" />
         <activity

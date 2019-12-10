@@ -3,6 +3,7 @@ package com.humber.saynn.mycommunity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -121,6 +122,12 @@ public class ChooseNationality extends AppCompatActivity {
                     japaneseLayout.setBackgroundColor(Color.WHITE);
                     japaneseSelected.setImageDrawable(null);
                 }
+            }
+        });
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
     }

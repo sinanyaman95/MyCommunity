@@ -97,6 +97,6 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //firebaseAuth.addAuthStateListener(authStateListener);
+        firebaseAuth.addAuthStateListener(authStateListener);
     }
 }

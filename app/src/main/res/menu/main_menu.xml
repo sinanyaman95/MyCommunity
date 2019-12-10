@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_explore" android:title="Explore"
+        android:icon="@drawable/exploreicon" />
+
+    <item android:id="@+id/menu_profile" android:title="Profile"
+        android:icon="@drawable/profileicon"/>
+
+    <item android:id="@+id/menu_search" android:title="Search"
+        android:icon="@drawable/searchicon"/>
+
+    <item android:id="@+id/menu_settings" android:title="Settings"
+        android:icon="@drawable/settingsicon"/>
+
+    <item android:id="@+id/menu_bookmarked" android:title="Bookmarked"
+        android:icon="@drawable/bookmarkicon"/>
+
+    <item android:id="@+id/menu_logout" android:title="Log out"
+        android:icon="@drawable/logouticon"/>
+</menu>
