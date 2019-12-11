@@ -1,4 +1,4 @@
-package com.humber.saynn.mycommunity;
+package com.humber.saynn.mycommunity.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.humber.saynn.mycommunity.R;
 
 public class ForgotPassword extends AppCompatActivity {
 

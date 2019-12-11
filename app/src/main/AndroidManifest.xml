@@ -11,20 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+        <activity android:name=".activities.FoodBlog"></activity>
         <activity
-            android:name=".ForgotPassword"
+            android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activities.ForgotPassword"
             android:theme="@style/AppTheme.PopUpTheme" />
-        <activity android:name=".ChooseNationality" />
-        <activity android:name=".ChooseCommunity" />
+        <activity android:name=".activities.ChooseNationality" />
+        <activity android:name=".activities.ChooseCommunity" />
         <activity
-            android:name=".SignUp"
+            android:name=".activities.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LogIn"
+            android:name=".activities.LogIn"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
