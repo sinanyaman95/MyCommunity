@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
         android:adjustViewBounds="true"
-        android:maxHeight="100dp"
-        android:layout_gravity="start"
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="20dp"/>
+        android:maxHeight="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="start" />
 
 </LinearLayout>
