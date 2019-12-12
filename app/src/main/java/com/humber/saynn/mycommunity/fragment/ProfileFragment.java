@@ -29,13 +29,15 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Fragment frag = HorizontalFoodFragment.newInstance();
+        Fragment foodFragment = HorizontalFoodFragment.newInstance();
+        Fragment musicFragent = HorizontalMusicFragment.newInstance();
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.foodFragmentProfile,frag);
+        fragmentTransaction.replace(R.id.foodFragmentProfile,foodFragment);
+        fragmentTransaction.replace(R.id.musicContainerProfile,musicFragent);
         fragmentTransaction.commit();
         fragmentTransaction.addToBackStack(null);
-        
+
     }
 }
