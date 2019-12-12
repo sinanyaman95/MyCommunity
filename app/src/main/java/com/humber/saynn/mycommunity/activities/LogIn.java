@@ -57,7 +57,7 @@ public class LogIn extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(), ChooseCommunity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Login", Toast.LENGTH_SHORT).show();
                 }
             }
         };

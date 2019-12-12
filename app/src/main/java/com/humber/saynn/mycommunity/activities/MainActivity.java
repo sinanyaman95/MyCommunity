@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -55,8 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment profileFrag = new ProfileFragment();
 
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainer, profileFrag).commit();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.replace(R.id.fragmentContainer, profileFrag).commit();
+            fragmentTransaction.addToBackStack(null);
             navView.setCheckedItem(R.id.menu_profile);
         }
     }
@@ -81,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 public void onClick(DialogInterface dialog, int which) {
                                     firebaseAuth = FirebaseAuth.getInstance();
                                     firebaseAuth.signOut();
-                                    finish();
                                     Intent a = new Intent(Intent.ACTION_MAIN);
                                     a.addCategory(Intent.CATEGORY_HOME);
                                     a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -100,5 +102,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        new AlertDialog.Builder(this)
+                .setTitle("Quitting the App")
+                .setMessage("This will exit the app, Press OK to Exit, Cancel to get back to app")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent a = new Intent(Intent.ACTION_MAIN);
+                        a.addCategory(Intent.CATEGORY_HOME);
+                        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(a);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
+
     }
 }

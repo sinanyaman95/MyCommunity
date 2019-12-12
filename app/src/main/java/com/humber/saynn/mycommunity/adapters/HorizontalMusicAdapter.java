@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.entities.Music;
 
@@ -45,7 +47,7 @@ public class HorizontalMusicAdapter extends RecyclerView.Adapter<HorizontalMusic
         holder.musicCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(ctx, "NOW PLAYING", Toast.LENGTH_SHORT).show();
             }
         });
 
