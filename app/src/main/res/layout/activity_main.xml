@@ -7,33 +7,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:clickable="false"
-    android:clipToPadding="false"
     android:fitsSystemWindows="true"
-    android:padding="16dp"
-    android:scrollIndicators="start"
-    android:visibility="visible"
     tools:openDrawer="start">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/mainToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    </com.google.android.material.appbar.AppBarLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/login_background"
+        android:background="#8a6803"
         android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mainToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        </com.google.android.material.appbar.AppBarLayout>
+
 
         <FrameLayout
             android:id="@+id/fragmentContainer"
@@ -47,11 +41,11 @@
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="#FFF"
         app:headerLayout="@layout/menu_header"
         app:itemIconTint="#6b6b6b"
         app:itemTextColor="#6b6b6b"
-        android:layout_gravity="start"
         app:menu="@menu/main_menu">
 
     </com.google.android.material.navigation.NavigationView>

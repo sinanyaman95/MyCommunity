@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -46,9 +47,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
+        Fragment profileFrag = new ProfileFragment();
+
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentContainer, new ProfileFragment()).commit();
+                    .replace(R.id.fragmentContainer, profileFrag).commit();
             navView.setCheckedItem(R.id.menu_profile);
         }
     }
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch (item.getItemId()){
                 case R.id.menu_profile:
                     getSupportFragmentManager().beginTransaction()
-                            .add(R.id.fragmentContainer, new ProfileFragment()).commit();
+                            .replace(R.id.fragmentContainer, new ProfileFragment()).commit();
                     break;
             }
             drawerLayout.closeDrawer(GravityCompat.START);

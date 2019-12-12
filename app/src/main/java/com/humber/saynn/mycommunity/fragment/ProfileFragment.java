@@ -10,6 +10,7 @@ import com.humber.saynn.mycommunity.R;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class ProfileFragment extends Fragment {
@@ -19,14 +20,22 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        Fragment f = HorizontalFoodFragment.newInstance();
-
         View v = inflater.inflate(R.layout.profile_fragment,container,false);
 
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.foodFragmentProfile,f);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Fragment frag = HorizontalFoodFragment.newInstance();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.foodFragmentProfile,frag);
+        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null);
+        
     }
 }
