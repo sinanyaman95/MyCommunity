@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 android:hint="Food Description"
                 android:padding="5dp" />
         </LinearLayout>
