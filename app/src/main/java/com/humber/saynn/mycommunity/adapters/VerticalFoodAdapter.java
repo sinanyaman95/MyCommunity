@@ -3,6 +3,7 @@ package com.humber.saynn.mycommunity.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,18 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
         Food tempFood = holder.food;
         holder.foodImage.setImageResource(tempFood.getImageId());
         holder.descriptionText.setText(tempFood.getDescription());
-
+        holder.url = tempFood.getUrl();
+        String url = holder.url;
+        final Uri location= Uri.parse(url);
+        holder.foodCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(location);
+                v.getContext().startActivity(i);
+                return true;
+            }
+        });
     }
 
     @Override
@@ -61,6 +73,7 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
         ImageView foodImage;
         TextView descriptionText;
         Food food;
+        String url;
 
 
         public ViewHolder(@NonNull View itemView) {

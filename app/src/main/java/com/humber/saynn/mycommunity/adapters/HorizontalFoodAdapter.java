@@ -3,6 +3,7 @@ package com.humber.saynn.mycommunity.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +49,25 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
         holder.foodImage.setImageResource(tempFood.getImageId());
         holder.descriptionText.setText(tempFood.getDescription());
         holder.foodCardView.setClickable(true);
+        holder.url = tempFood.getUrl();
+        String url = holder.url;
+        final Uri location= Uri.parse(url);
+
         holder.foodCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ctx.getApplicationContext(), FoodBlog.class);
                 ctx.startActivity(i);
+            }
+        });
+
+        holder.foodCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(location);
+                v.getContext().startActivity(i);
+                return true;
             }
         });
 
@@ -68,6 +83,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
         CardView foodCardView;
         ImageView foodImage;
         TextView descriptionText;
+        String url;
         Food food;
 
 
