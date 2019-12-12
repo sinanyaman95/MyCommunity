@@ -31,6 +31,20 @@ public class FoodContent {
         tempFoodList.add(new Food("Food", R.drawable.foodimage));
         tempFoodList.add(new Food("Food", R.drawable.foodimage));
         tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
+        tempFoodList.add(new Food("Food", R.drawable.foodimage));
 
         return tempFoodList;
 

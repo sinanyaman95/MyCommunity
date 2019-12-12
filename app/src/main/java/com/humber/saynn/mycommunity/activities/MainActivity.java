@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragmentContainer, new ProfileFragment()).commit();
                     break;
+                case R.id.menu_explore:
+                    startActivity(new Intent(this,ExploreActivity.class));
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;

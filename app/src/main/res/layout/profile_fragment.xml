@@ -19,16 +19,39 @@
         android:adjustViewBounds="true"/>
 
     <LinearLayout
+        android:id="@+id/foodTextLayout"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Foods"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:layout_marginTop="50dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/foodLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        app:layout_constraintTop_toBottomOf="@id/foodTextLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="20dp">
 
         <FrameLayout
             android:id="@+id/foodFragmentProfile"
@@ -39,11 +62,35 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/musicTextLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/foodLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Musics"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:layout_marginTop="50dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="horizontal"
         android:id="@+id/musicLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/foodLayout"
+        app:layout_constraintTop_toBottomOf="@id/musicTextLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         android:layout_marginStart="30dp"
