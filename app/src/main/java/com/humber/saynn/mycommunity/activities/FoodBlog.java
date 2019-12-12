@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.adapters.HorizontalFoodAdapter;
+import com.humber.saynn.mycommunity.adapters.VerticalFoodAdapter;
 import com.humber.saynn.mycommunity.entities.Food;
 import com.humber.saynn.mycommunity.entities.FoodContent;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class FoodBlog extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    HorizontalFoodAdapter horizontalFoodAdapter;
+    VerticalFoodAdapter verticalFoodAdapter;
     ArrayList<Food> foodList;
 
 
@@ -26,9 +27,9 @@ public class FoodBlog extends AppCompatActivity {
         setContentView(R.layout.activity_food_blog);
 
         foodList = FoodContent.getInstance().getFoodList();
-        horizontalFoodAdapter = new HorizontalFoodAdapter(this,foodList);
+        verticalFoodAdapter = new VerticalFoodAdapter(this,foodList);
         recyclerView = findViewById(R.id.foodBlogRecycler);
-        recyclerView.setAdapter(horizontalFoodAdapter);
+        recyclerView.setAdapter(verticalFoodAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
     }
 }

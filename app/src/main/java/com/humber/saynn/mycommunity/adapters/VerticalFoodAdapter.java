@@ -47,14 +47,6 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
         Food tempFood = holder.food;
         holder.foodImage.setImageResource(tempFood.getImageId());
         holder.descriptionText.setText(tempFood.getDescription());
-        holder.foodCardView.setClickable(true);
-        holder.foodCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ctx.getApplicationContext(), FoodBlog.class);
-                ctx.startActivity(i);
-            }
-        });
 
     }
 
