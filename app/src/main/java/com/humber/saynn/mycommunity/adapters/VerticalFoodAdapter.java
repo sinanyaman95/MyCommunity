@@ -51,13 +51,12 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
         holder.url = tempFood.getUrl();
         String url = holder.url;
         final Uri location= Uri.parse(url);
-        holder.foodCardView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.foodCardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(location);
                 v.getContext().startActivity(i);
-                return true;
             }
         });
     }
