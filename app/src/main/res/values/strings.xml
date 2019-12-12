@@ -33,4 +33,6 @@
     <string name="log_out">Log out</string>
     <string name="food_blog">Food Blog</string>
     <string name="meals">Meals</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="musics">Musics</string>
 </resources>

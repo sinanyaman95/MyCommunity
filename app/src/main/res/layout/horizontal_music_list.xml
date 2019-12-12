@@ -9,6 +9,7 @@
     android:orientation="horizontal"
     tools:context=".fragment.HorizontalFoodFragment"
     tools:listitem="@layout/horizontal_food_item"
+    android:scrollbars="horizontal"
     android:id="@+id/musicRecycler">
 
 </androidx.recyclerview.widget.RecyclerView>

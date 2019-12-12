@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Foods"
+            android:text="@string/restaurants"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             android:layout_marginStart="30dp"
@@ -53,6 +53,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp">
 
+
         <FrameLayout
             android:id="@+id/foodFragmentProfile"
             android:layout_width="match_parent"
@@ -71,7 +72,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Musics"
+            android:text="@string/musics"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             android:layout_marginStart="30dp"
