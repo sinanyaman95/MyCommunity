@@ -4,20 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layerType="software"
+    android:gravity="center"
     android:background="@drawable/dashed_line"
+    android:id="@+id/addRestaurantLayout"
     >
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/dashed_line"
-        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD"
-        android:gravity="center"
         android:textStyle="bold"
         android:textColor="#239bfc"
         android:textSize="20sp"/>

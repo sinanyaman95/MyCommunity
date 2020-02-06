@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,14 +27,12 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
     ArrayList<Food> foodList;
     LayoutInflater inflater;
     Context ctx;
-    int foodListSize;
 
     private static final int VIEW_TYPE_FOOTER = 99;
     private static final int VIEW_TYPE_CELL = 1;
 
     public VerticalFoodAdapter(Context ctx,ArrayList<Food> foodList){
         this.foodList = foodList;
-        foodListSize = foodList.size();
         inflater = LayoutInflater.from(ctx);
         this.ctx = ctx;
     }
@@ -46,7 +45,6 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
             view = inflater.inflate(R.layout.vertical_food_item,parent,false);
         }else{
             view = inflater.inflate(R.layout.vertical_food_button,parent,false);
-            foodListSize += 1;
         }
 
         return new ViewHolder(view);
@@ -55,26 +53,39 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.food = foodList.get(position);
-        Food tempFood = holder.food;
-        holder.foodImage.setImageResource(tempFood.getImageId());
-        holder.descriptionText.setText(tempFood.getDescription());
-        holder.url = tempFood.getUrl();
-        String url = holder.url;
-        final Uri location= Uri.parse(url);
-        holder.foodCardView.setOnClickListener(new View.OnClickListener() {
+        if(position != foodList.size()){
+            holder.food = foodList.get(position);
+            Food tempFood = holder.food;
+            holder.foodImage.setImageResource(tempFood.getImageId());
+            holder.descriptionText.setText(tempFood.getDescription());
+            holder.url = tempFood.getUrl();
+            String url = holder.url;
+            final Uri location= Uri.parse(url);
+            holder.foodCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(location);
+                    v.getContext().startActivity(i);
+                }
+            });
+        }else{
+            holder.addLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(location);
-                v.getContext().startActivity(i);
+                Toast.makeText(v.getContext(),"This is adding a new res",Toast.LENGTH_SHORT).show();
             }
         });
+        }
+
+
+
+
     }
 
     @Override
     public int getItemCount() {
-        return foodListSize;
+        return foodList.size() + 1;
     }
 
     @Override
@@ -89,6 +100,7 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
         TextView descriptionText;
         Food food;
         String url;
+        LinearLayout addLayout;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -97,6 +109,7 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
             foodImage = itemView.findViewById(R.id.foodImage);
             descriptionText = itemView.findViewById(R.id.foodText);
             foodCardView = itemView.findViewById(R.id.foodCardView);
+            addLayout = itemView.findViewById(R.id.addRestaurantLayout);
 
         }
     }
