@@ -2,62 +2,152 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.ProfileFragment">
 
-    <ImageView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/profileImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="40dp"
-        android:src="@drawable/ic_person_black_24dp"
-        android:adjustViewBounds="true"/>
+    <RelativeLayout
+        android:id="@+id/profileHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:background="@drawable/profile_header_background">
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_person_black_24dp" />
+            <TextView
+                android:id="@+id/editPhotoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Photo"
+                android:textColor="#FFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profileDisplayLayout"
+            android:layout_width="400dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="160dp"
+            android:layout_centerHorizontal="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:padding="5dp"
+                        android:src="@drawable/turkish_flag" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profileCuisine"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:padding="5dp"
+                        android:src="@drawable/cuisine_image" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/profileMusic"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:padding="5dp"
+                        android:src="@drawable/musicimage" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/foodTextLayout"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profileImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/profileHeaderLayout">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/restaurants"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
+            android:text="@string/restaurants"
+            android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFF"
-            android:layout_marginTop="50dp"/>
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:id="@+id/foodLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/foodTextLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foodTextLayout">
 
 
         <FrameLayout
             android:id="@+id/foodFragmentProfile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
@@ -72,41 +162,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/musics"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="30dp"
+            android:text="@string/musics"
+            android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFF"
-            android:layout_marginTop="50dp"/>
-
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:id="@+id/musicLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/musicTextLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="50dp">
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/musicTextLayout">
 
         <FrameLayout
+            android:id="@+id/musicContainerProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/musicContainerProfile"/>
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

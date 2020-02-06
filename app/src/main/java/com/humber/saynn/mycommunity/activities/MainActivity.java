@@ -1,6 +1,7 @@
 package com.humber.saynn.mycommunity.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -31,10 +34,15 @@ import com.humber.saynn.mycommunity.fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final int PICTURE_REQUEST_CODE = 99;
+
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navView;
     FirebaseAuth firebaseAuth;
+
+    ImageView profileImage;
+    TextView editPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navView = findViewById(R.id.navigation);
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
+
+        profileImage = findViewById(R.id.profileImage);
+        editPhoto = findViewById(R.id.editPhotoText);
 
         navView.setNavigationItemSelectedListener(this);
 
@@ -64,6 +75,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    private void chooseImageFile(){
+        Intent intent = new Intent();
+        intent.setType("inage/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Picture"),
+                PICTURE_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
