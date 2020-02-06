@@ -26,9 +26,14 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
     ArrayList<Food> foodList;
     LayoutInflater inflater;
     Context ctx;
+    int foodListSize;
+
+    private static final int VIEW_TYPE_FOOTER = 99;
+    private static final int VIEW_TYPE_CELL = 1;
 
     public VerticalFoodAdapter(Context ctx,ArrayList<Food> foodList){
         this.foodList = foodList;
+        foodListSize = foodList.size();
         inflater = LayoutInflater.from(ctx);
         this.ctx = ctx;
     }
@@ -36,9 +41,15 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
     @NonNull
     @Override
     public VerticalFoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.vertical_food_item,parent,false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        View view;
+        if(viewType == VIEW_TYPE_CELL){
+            view = inflater.inflate(R.layout.vertical_food_item,parent,false);
+        }else{
+            view = inflater.inflate(R.layout.vertical_food_button,parent,false);
+            foodListSize += 1;
+        }
+
+        return new ViewHolder(view);
     }
 
     @Override
@@ -63,7 +74,12 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
 
     @Override
     public int getItemCount() {
-        return foodList.size();
+        return foodListSize;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (position == foodList.size()) ? VIEW_TYPE_FOOTER : VIEW_TYPE_CELL;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
