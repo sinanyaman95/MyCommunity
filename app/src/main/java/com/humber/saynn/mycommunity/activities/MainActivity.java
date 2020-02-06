@@ -14,7 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,17 +35,15 @@ import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.fragment.HorizontalFoodFragment;
 import com.humber.saynn.mycommunity.fragment.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.io.IOException;
 
-    public static final int PICTURE_REQUEST_CODE = 99;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navView;
     FirebaseAuth firebaseAuth;
-
-    ImageView profileImage;
-    TextView editPhoto;
+    Fragment profileFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
 
-        profileImage = findViewById(R.id.profileImage);
-        editPhoto = findViewById(R.id.editPhotoText);
-
         navView.setNavigationItemSelectedListener(this);
 
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        Fragment profileFrag = new ProfileFragment();
+        profileFrag = new ProfileFragment();
 
         if(savedInstanceState==null){
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -75,17 +73,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private void chooseImageFile(){
-        Intent intent = new Intent();
-        intent.setType("inage/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select Picture"),
-                PICTURE_REQUEST_CODE);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        profileFrag.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
