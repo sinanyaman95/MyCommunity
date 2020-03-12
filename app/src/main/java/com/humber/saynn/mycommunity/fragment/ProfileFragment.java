@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Select Picture"),
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"),
                 PICTURE_REQUEST_CODE);
     }
 

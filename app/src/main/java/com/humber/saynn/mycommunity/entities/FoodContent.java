@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class FoodContent {
 
     private static FoodContent fc_instance;
-    ArrayList<Food> foodList;
+    ArrayList<Food> foodList = new ArrayList<>();
     private FoodContent(){
         foodList = fillFoodList();
     }
@@ -49,6 +49,12 @@ public class FoodContent {
 
         return tempFoodList;
 
+    }
+
+    public void addFood(Food f){
+        if(foodList != null){
+            foodList.add(f);
+        }
     }
 
     public ArrayList<Food> getFoodList() {
