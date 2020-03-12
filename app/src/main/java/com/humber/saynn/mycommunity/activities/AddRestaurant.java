@@ -66,6 +66,7 @@ public class AddRestaurant extends AppCompatActivity {
         Food f = new Food(name,image,url);
         FoodContent fc = FoodContent.getInstance();
         fc.addFood(f);
+        startActivity(new Intent(getApplicationContext(),FoodBlog.class));
     }
 
     private void chooseImageFile(){
