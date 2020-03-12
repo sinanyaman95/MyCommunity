@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.activities.AddRestaurant;
 import com.humber.saynn.mycommunity.activities.FoodBlog;
 import com.humber.saynn.mycommunity.entities.Food;
 
@@ -74,6 +75,8 @@ public class VerticalFoodAdapter extends RecyclerView.Adapter<VerticalFoodAdapte
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),"This is adding a new res",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(ctx, AddRestaurant.class);
+                ctx.startActivity(i);
             }
         });
         }
