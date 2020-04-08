@@ -47,6 +47,8 @@ public class ExploreActivity extends AppCompatActivity {
 
         ArrayList<User> tempUserList = new ArrayList<>();
 
+        //TODO: get reviews from db with food id and user id
+
         tempUserList.add(new User("syaman","I really liked this food which can be found in ..... Restaurant"));
         tempUserList.add(new User("bishey","Clean, delicious"));
         tempUserList.add(new User("nav","Didn't like it tbh."));

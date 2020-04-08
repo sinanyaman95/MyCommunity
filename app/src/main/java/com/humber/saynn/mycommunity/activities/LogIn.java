@@ -16,7 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.humber.saynn.mycommunity.R;
+
+import java.util.HashMap;
 
 public class LogIn extends AppCompatActivity {
 
@@ -86,6 +89,14 @@ public class LogIn extends AppCompatActivity {
                             }else{
                                 Intent i = new Intent(getApplicationContext(), ChooseCommunity.class);
                                 i.putExtra(USER_EMAIL,emailEditText.getText().toString());
+
+                                HashMap<String,Object> map = new HashMap<>();
+                                map.put("id",1);
+                                map.put("email",emailEditText.getText().toString());
+                                FirebaseDatabase.getInstance().getReference()
+                                        .child("MyCommunity")
+                                        .child("Users")
+                                        .setValue(map);
                                 startActivity(i);
                             }
                         }
@@ -101,6 +112,6 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
+        //firebaseAuth.addAuthStateListener(authStateListener);
     }
 }
