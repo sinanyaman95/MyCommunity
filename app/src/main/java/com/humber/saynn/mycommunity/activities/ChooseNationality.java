@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.humber.saynn.mycommunity.R;
 
+import java.util.ArrayList;
+
 public class ChooseNationality extends AppCompatActivity {
 
     LinearLayout turkishLayout;
@@ -36,11 +38,15 @@ public class ChooseNationality extends AppCompatActivity {
     ImageView japaneseSelected;
 
     Button continueButton;
+    String userEmail;
+    boolean turkish, indian, chinese, pakistani, japanese;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_nationality);
+        Intent i = getIntent();
+        if(i.hasExtra(LogIn.USER_EMAIL)) userEmail = i.getStringExtra(LogIn.USER_EMAIL);
 
         turkishLayout = findViewById(R.id.turkishLayout);
         indianLayout = findViewById(R.id.indianLayout);
@@ -64,9 +70,11 @@ public class ChooseNationality extends AppCompatActivity {
                 if(bgColor.getColor() != ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory)){
                     turkishLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory));
                     turkishSelected.setImageResource(R.drawable.check_image);
+                    turkish = true;
                 }else{
                     turkishLayout.setBackgroundColor(Color.WHITE);
                     turkishSelected.setImageDrawable(null);
+                    turkish = false;
                 }
             }
         });
@@ -78,9 +86,11 @@ public class ChooseNationality extends AppCompatActivity {
                 if(bgColor.getColor() != ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory)){
                     indianLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory));
                     indianSelected.setImageResource(R.drawable.check_image);
+                    indian = true;
                 }else{
                     indianLayout.setBackgroundColor(Color.WHITE);
                     indianSelected.setImageDrawable(null);
+                    indian = false;
                 }
             }
         });
@@ -92,9 +102,11 @@ public class ChooseNationality extends AppCompatActivity {
                 if(bgColor.getColor() != ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory)){
                     chineseLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory));
                     chineseSelected.setImageResource(R.drawable.check_image);
+                    chinese = true;
                 }else{
                     chineseLayout.setBackgroundColor(Color.WHITE);
                     chineseSelected.setImageDrawable(null);
+                    chinese = false;
                 }
             }
         });
@@ -106,9 +118,11 @@ public class ChooseNationality extends AppCompatActivity {
                 if(bgColor.getColor() != ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory)){
                     pakistaniLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory));
                     pakistaniSelected.setImageResource(R.drawable.check_image);
+                    pakistani = true;
                 }else{
                     pakistaniLayout.setBackgroundColor(Color.WHITE);
                     pakistaniSelected.setImageDrawable(null);
+                    pakistani = false;
                 }
             }
         });
@@ -120,9 +134,11 @@ public class ChooseNationality extends AppCompatActivity {
                 if(bgColor.getColor() != ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory)){
                     japaneseLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.selectedCategory));
                     japaneseSelected.setImageResource(R.drawable.check_image);
+                    japanese = true;
                 }else{
                     japaneseLayout.setBackgroundColor(Color.WHITE);
                     japaneseSelected.setImageDrawable(null);
+                    japanese = false;
                 }
             }
         });
@@ -132,5 +148,20 @@ public class ChooseNationality extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
+    }
+
+    private void addUserPreference() {
+        ArrayList<String> communitiesSelected = new ArrayList<>();
+        if(turkish) communitiesSelected.add("turkish");
+        if(indian) communitiesSelected.add("indian");
+        if(chinese) communitiesSelected.add("chinese");
+        if(japanese) communitiesSelected.add("japanese");
+        if(pakistani) communitiesSelected.add("pakistani");
+
+        //TODO: add preferences to database
+        for(String s: communitiesSelected){
+
+        }
+
     }
 }

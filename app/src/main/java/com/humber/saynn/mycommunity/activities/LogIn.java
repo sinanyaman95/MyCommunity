@@ -20,6 +20,8 @@ import com.humber.saynn.mycommunity.R;
 
 public class LogIn extends AppCompatActivity {
 
+    public static final String USER_EMAIL = "user_email";
+
     Button signUpButton;
     EditText emailEditText,passwordEditText;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -83,6 +85,7 @@ public class LogIn extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"Login can't be completed.",Toast.LENGTH_SHORT).show();
                             }else{
                                 Intent i = new Intent(getApplicationContext(), ChooseCommunity.class);
+                                i.putExtra(USER_EMAIL,emailEditText.getText().toString());
                                 startActivity(i);
                             }
                         }
