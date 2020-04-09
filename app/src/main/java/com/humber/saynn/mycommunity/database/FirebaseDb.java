@@ -1,5 +1,6 @@
 package com.humber.saynn.mycommunity.database;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -8,6 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.activities.MainActivity;
 import com.humber.saynn.mycommunity.entities.Food;
 
 import java.util.ArrayList;
@@ -15,10 +17,10 @@ import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 
-public class FirebaseDb {
+public class FirebaseDb{
     private FirebaseDatabase db;
     private DatabaseReference mDatabase;
-    String nationality;
+    static String nationality;
 
     private FirebaseDb() {
         db = FirebaseDatabase.getInstance();
@@ -101,7 +103,6 @@ public class FirebaseDb {
         return mDatabase;
     }
 
-
     public void addPreference(String s, String email) {
         String userEmail = getEmailAddress(email);
         if(userEmail != null){
@@ -124,44 +125,13 @@ public class FirebaseDb {
                     .child("Nationalities")
                     .child(s).setValue("true");
         }
-    }
-
-
-    public void getUserNationality(final String email) {
-
-        DatabaseReference mc = db.getReference("MyCommunity");
-        final String userEmail = getEmailAddress(email);
-        final DatabaseReference userNationality = mc.child("Users").child(userEmail).child("Nationalities");
-        final NationalityHolder holder = new NationalityHolder();
-        userNationality.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild("turkish")){
-                    holder.nationality = "turkish";
-                    Log.d("syDebug", "I am working");
-                }else{
-                    holder.nationality = "general";
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        setNationality(holder.nationality);
+        nationality = s;
     }
 
     public String getNationality() {
         return nationality;
     }
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
 
-    private static class NationalityHolder {
-        public String nationality;
-    }
+
 }

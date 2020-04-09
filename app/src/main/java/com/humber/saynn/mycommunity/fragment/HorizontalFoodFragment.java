@@ -24,12 +24,13 @@ public class HorizontalFoodFragment extends Fragment {
 
     ArrayList<Food> foodList;
     String email;
+    FirebaseDb db;
 
 
     public HorizontalFoodFragment(String email){
         this.email = email;
+        db=FirebaseDb.getInstance();
         this.foodList = fixFoodList();
-
     }
 
     private ArrayList<Food> fixFoodList() {
@@ -45,8 +46,6 @@ public class HorizontalFoodFragment extends Fragment {
     }
 
     private String getUserNationality() {
-        FirebaseDb db = FirebaseDb.getInstance();
-        db.getUserNationality(email);
         return db.getNationality();
     }
 

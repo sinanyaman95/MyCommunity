@@ -82,7 +82,7 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void signIn(View v){
-        String email = emailEditText.getText().toString();
+        final String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
         if(email.isEmpty()){
@@ -100,7 +100,7 @@ public class LogIn extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"Login can't be completed.",Toast.LENGTH_SHORT).show();
                             }else{
                                 Intent i = new Intent(getApplicationContext(), ChooseCommunity.class);
-                                i.putExtra(USER_EMAIL,emailEditText.getText().toString());
+                                i.putExtra(USER_EMAIL,emailEditText.getText().toString());;
                                 db.checkUserExists(emailEditText.getText().toString());
                                 startActivity(i);
                             }
