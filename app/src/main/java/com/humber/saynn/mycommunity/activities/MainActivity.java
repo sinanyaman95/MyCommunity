@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             .replace(R.id.fragmentContainer, new ProfileFragment(userEmail)).commit();
                     break;
                 case R.id.menu_explore:
-                    startActivity(new Intent(this,ExploreActivity.class));
+                    startActivity(new Intent(this,FoodBlog.class));
                     break;
                 case R.id.menu_logout:
                     new AlertDialog.Builder(this)

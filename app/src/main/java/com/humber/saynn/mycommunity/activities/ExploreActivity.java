@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.humber.saynn.mycommunity.R;
@@ -23,11 +24,14 @@ public class ExploreActivity extends AppCompatActivity {
     HorizontalFoodAdapter horizontalFoodAdapter;
     ArrayList<User> userList;
     VerticalUserCommentAdapter verticalUserCommentAdapter;
-
+    String foodName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
+
+        Intent mainIntent = getIntent();
+        if(mainIntent.hasExtra("food")) foodName = mainIntent.getStringExtra("food");
 
         foodArrayList = FoodContent.getInstance().getFoodList();
         userList = fillUsers();

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.activities.ExploreActivity;
 import com.humber.saynn.mycommunity.activities.FoodBlog;
 import com.humber.saynn.mycommunity.entities.Food;
 
@@ -43,7 +44,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
         holder.food = foodList.get(position);
         Food tempFood = holder.food;
@@ -57,7 +58,8 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
         holder.foodCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ctx.getApplicationContext(), FoodBlog.class);
+                Intent i = new Intent(ctx.getApplicationContext(), ExploreActivity.class);
+                i.putExtra("food",holder.food.getDescription());
                 ctx.startActivity(i);
             }
         });

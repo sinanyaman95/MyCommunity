@@ -21,8 +21,10 @@ public class FirebaseDb{
     private FirebaseDatabase db;
     private DatabaseReference mDatabase;
     static String nationality;
+    static HashMap<String,String> userComments;
 
     private FirebaseDb() {
+        userComments = new HashMap<>();
         db = FirebaseDatabase.getInstance();
         mDatabase = db.getReference();
     }
@@ -132,6 +134,24 @@ public class FirebaseDb{
         return nationality;
     }
 
+    public void fillUserComments(final String foodName){
+        DatabaseReference dr = db
+                .getReference("MyCommunity")
+                .child("Foods")
+                .child(foodName);
+        dr.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
 
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 }
