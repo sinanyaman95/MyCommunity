@@ -63,4 +63,27 @@ public class FirebaseDb {
     }
 
 
+    public void addPreference(String s, String email) {
+        String userEmail = getEmailAddress(email);
+        if(userEmail != null){
+            mDatabase.child("MyCommunity")
+                    .child("Users")
+                    .child(userEmail)
+                    .child("Preferences")
+                    .child(s).setValue("true");
+        }
+
+
+    }
+
+    public void addCommunity(String s, String email) {
+        String userEmail = getEmailAddress(email);
+        if(userEmail != null){
+            mDatabase.child("MyCommunity")
+                    .child("Users")
+                    .child(userEmail)
+                    .child("Nationalities")
+                    .child(s).setValue("true");
+        }
+    }
 }

@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.database.FirebaseDb;
 
 import java.util.ArrayList;
 
@@ -37,6 +39,7 @@ public class ChooseCommunity extends AppCompatActivity {
     Button continueButton;
     String userEmail;
     boolean cuisine,music,sports,general;
+    FirebaseDb db = FirebaseDb.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,9 +147,8 @@ public class ChooseCommunity extends AppCompatActivity {
         if(general) communitiesSelected.add("general");
         if(sports) communitiesSelected.add("sports");
 
-        //TODO: add preferences to database
         for(String s: communitiesSelected){
-
+            db.addPreference(s,userEmail);
         }
 
     }

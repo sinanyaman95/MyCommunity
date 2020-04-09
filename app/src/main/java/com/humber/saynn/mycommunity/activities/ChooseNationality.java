@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.database.FirebaseDb;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,7 @@ public class ChooseNationality extends AppCompatActivity {
     Button continueButton;
     String userEmail;
     boolean turkish, indian, chinese, pakistani, japanese;
+    FirebaseDb db = FirebaseDb.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +148,10 @@ public class ChooseNationality extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                addUserPreference();
+                Intent i = new Intent(getApplicationContext(),MainActivity.class);
+                i.putExtra(LogIn.USER_EMAIL,userEmail);
+                startActivity(i);
             }
         });
     }
@@ -158,9 +164,8 @@ public class ChooseNationality extends AppCompatActivity {
         if(japanese) communitiesSelected.add("japanese");
         if(pakistani) communitiesSelected.add("pakistani");
 
-        //TODO: add preferences to database
         for(String s: communitiesSelected){
-
+            db.addCommunity(s,userEmail);
         }
 
     }
