@@ -23,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         FirebaseDb db = FirebaseDb.getInstance();
         FoodContent fc = FoodContent.getInstance();
-        db.addFood(fc.getFoodList());
+        db.checkFoodsExist(fc.getFoodList());
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

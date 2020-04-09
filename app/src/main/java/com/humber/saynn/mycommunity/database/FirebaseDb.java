@@ -30,16 +30,6 @@ public class FirebaseDb {
         }
     }
 
-    public void addFood(String desc, int image, String url){
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("image",image);
-        map.put("url",url);
-        mDatabase.child("MyCommunity")
-                .child("Foods")
-                .child(desc)
-                .setValue(map);
-    }
-
     public void addFood(Food f){
         HashMap<String, Object> map = new HashMap<>();
         map.put("image",f.getImageId());
@@ -59,6 +49,23 @@ public class FirebaseDb {
                 if (!snapshot.hasChild(userEmail)) {
                     // run some code
                     addUser(fullEmail,userEmail);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void checkFoodsExist(final ArrayList<Food> foods) {
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (!snapshot.hasChild("Foods")) {
+                    // run some code
+                    addFood(foods);
                 }
             }
 
