@@ -27,6 +27,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
     LayoutInflater inflater;
     Context ctx;
 
+
     public HorizontalFoodAdapter(Context ctx,ArrayList<Food> foodList){
         this.foodList = foodList;
         inflater = LayoutInflater.from(ctx);

@@ -29,8 +29,12 @@ public class ProfileFragment extends Fragment {
     ImageView profileImage;
     TextView editPhotoText;
     Bitmap bitmap;
-
+    String email;
     View v;
+
+    public ProfileFragment(String email){
+        this.email = email;
+    }
 
     @Nullable
     @Override
@@ -54,7 +58,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Fragment foodFragment = HorizontalFoodFragment.newInstance();
+        Fragment foodFragment = new HorizontalFoodFragment(email);
         Fragment musicFragent = HorizontalMusicFragment.newInstance();
 
         FragmentManager fragmentManager = getFragmentManager();

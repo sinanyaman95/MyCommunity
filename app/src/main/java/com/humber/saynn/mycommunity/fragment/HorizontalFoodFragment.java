@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.adapters.HorizontalFoodAdapter;
+import com.humber.saynn.mycommunity.database.FirebaseDb;
 import com.humber.saynn.mycommunity.entities.Food;
 import com.humber.saynn.mycommunity.entities.FoodContent;
 
@@ -21,18 +22,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HorizontalFoodFragment extends Fragment {
 
-    HorizontalFoodAdapter horizontalFoodAdapter;
     ArrayList<Food> foodList;
+    String email;
 
 
-    private HorizontalFoodFragment(){
-        this.foodList = FoodContent.getInstance().getFoodList();
+    public HorizontalFoodFragment(String email){
+        this.email = email;
+        this.foodList = fixFoodList();
+
     }
 
-    public static HorizontalFoodFragment newInstance(){
-        return new HorizontalFoodFragment();
+    private ArrayList<Food> fixFoodList() {
+        ArrayList<Food> foodList = FoodContent.getInstance().getFoodList();
+        ArrayList<Food> tempList = new ArrayList<>();
+        String nationality = getUserNationality();
+        for(Food f: foodList){
+            if(f.getNationality().equalsIgnoreCase(nationality)){
+                tempList.add(f);
+            }
+        }
+        return tempList;
     }
 
+    private String getUserNationality() {
+        FirebaseDb db = FirebaseDb.getInstance();
+        db.getUserNationality(email);
+        return db.getNationality();
+    }
 
     @Nullable
     @Override

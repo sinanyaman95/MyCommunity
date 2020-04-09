@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,11 +46,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseAuth firebaseAuth;
     Fragment profileFrag;
 
+    String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent mainIntent = getIntent();
+        if(mainIntent.hasExtra(LogIn.USER_EMAIL)) userEmail = mainIntent.getStringExtra(LogIn.USER_EMAIL);
         navView = findViewById(R.id.navigation);
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
@@ -62,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-        profileFrag = new ProfileFragment();
+        profileFrag = new ProfileFragment(userEmail);
 
         if(savedInstanceState==null){
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -84,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch (item.getItemId()){
                 case R.id.menu_profile:
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentContainer, new ProfileFragment()).commit();
+                            .replace(R.id.fragmentContainer, new ProfileFragment(userEmail)).commit();
                     break;
                 case R.id.menu_explore:
                     startActivity(new Intent(this,ExploreActivity.class));

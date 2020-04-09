@@ -1,5 +1,7 @@
 package com.humber.saynn.mycommunity.database;
 
+import android.util.Log;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,10 +16,13 @@ import java.util.HashMap;
 import androidx.annotation.NonNull;
 
 public class FirebaseDb {
+    private FirebaseDatabase db;
     private DatabaseReference mDatabase;
+    String nationality;
 
     private FirebaseDb() {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseDatabase.getInstance();
+        mDatabase = db.getReference();
     }
 
     public static FirebaseDb getInstance(){
@@ -121,4 +126,42 @@ public class FirebaseDb {
         }
     }
 
+
+    public void getUserNationality(final String email) {
+
+        DatabaseReference mc = db.getReference("MyCommunity");
+        final String userEmail = getEmailAddress(email);
+        final DatabaseReference userNationality = mc.child("Users").child(userEmail).child("Nationalities");
+        final NationalityHolder holder = new NationalityHolder();
+        userNationality.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild("turkish")){
+                    holder.nationality = "turkish";
+                    Log.d("syDebug", "I am working");
+                }else{
+                    holder.nationality = "general";
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        setNationality(holder.nationality);
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    private static class NationalityHolder {
+        public String nationality;
+    }
 }
