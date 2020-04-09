@@ -5,11 +5,17 @@ public class Food {
     private String description;
     private int imageId;
     private String url;
+    private String nationality;
 
     public Food(String description, int imageId,String url) {
+        this(description,imageId,url,"general");
+    }
+
+    public Food(String description, int imageId,String url, String nationality) {
         this.description = description;
         this.imageId = imageId;
         this.url = url;
+        this.nationality = nationality;
     }
 
     public String getDescription() {
@@ -34,5 +40,13 @@ public class Food {
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 }

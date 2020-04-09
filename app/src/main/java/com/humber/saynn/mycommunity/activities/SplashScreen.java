@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.database.FirebaseDb;
+import com.humber.saynn.mycommunity.entities.FoodContent;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -19,6 +21,9 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        FirebaseDb db = FirebaseDb.getInstance();
+        FoodContent fc = FoodContent.getInstance();
+        db.addFood(fc.getFoodList());
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

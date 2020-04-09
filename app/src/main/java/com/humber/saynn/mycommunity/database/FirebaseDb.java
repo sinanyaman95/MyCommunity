@@ -5,7 +5,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.entities.Food;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import androidx.annotation.NonNull;
 
@@ -13,15 +17,38 @@ public class FirebaseDb {
     private DatabaseReference mDatabase;
 
     private FirebaseDb() {
-        this.mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     public static FirebaseDb getInstance(){
         return new FirebaseDb();
     }
 
-    public void AddFood(String foodId, Food newFood){
-        mDatabase.child("foods").child(foodId).setValue(newFood);
+    public void addFood(ArrayList<Food> foods){
+        for(Food f: foods){
+            addFood(f);
+        }
+    }
+
+    public void addFood(String desc, int image, String url){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("image",image);
+        map.put("url",url);
+        mDatabase.child("MyCommunity")
+                .child("Foods")
+                .child(desc)
+                .setValue(map);
+    }
+
+    public void addFood(Food f){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("image",f.getImageId());
+        map.put("url",f.getUrl());
+        map.put("nationality",f.getNationality());
+        mDatabase.child("MyCommunity")
+                .child("Foods")
+                .child(f.getDescription())
+                .setValue(map);
     }
 
     public void checkUserExists(final String fullEmail) {
@@ -86,4 +113,5 @@ public class FirebaseDb {
                     .child(s).setValue("true");
         }
     }
+
 }

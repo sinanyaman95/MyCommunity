@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.database.FirebaseDb;
 
