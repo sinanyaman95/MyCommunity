@@ -33,25 +33,59 @@ public class ExploreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
-        userList = new ArrayList<>();
         db= FirebaseDb.getInstance();
 
         Intent mainIntent = getIntent();
         if(mainIntent.hasExtra("food")) foodName = mainIntent.getStringExtra("food");
+        bottomVertical = findViewById(R.id.userCommentRecycler);
+        db.getCommentList(foodName, new FirebaseDb.OnGetDataListener() {
+            @Override
+            public void onSuccess(DataSnapshot dataSnapshot) {
+                userList = new ArrayList<>();
+                if(dataSnapshot.child(foodName).exists()){
+                    DataSnapshot food = dataSnapshot.child(foodName);
+                    for(DataSnapshot ds: food.getChildren()){
+                        if(!ds.getKey().equals("image")
+                                && !ds.getKey().equals("url")
+                                && !ds.getKey().equals("nationality")){
+                            User u = new User();
+                            u.setUsername(ds.getKey());
+                            u.setComment(ds.getValue().toString());
+                            userList.add(u);
+                        }
+                    }
+                }
+                verticalUserCommentAdapter = new VerticalUserCommentAdapter(getApplicationContext(),userList);
+                bottomVertical.setAdapter(verticalUserCommentAdapter);
+                bottomVertical.setLayoutManager(
+                        new LinearLayoutManager(getApplicationContext(),
+                                LinearLayoutManager.VERTICAL,
+                                false));
+            }
 
-        userList = db.getUserCommentList(foodName);
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
         foodArrayList = FoodContent.getInstance().getFoodList();
         horizontalFoodAdapter = new HorizontalFoodAdapter(this,foodArrayList);
         topHorizontal = findViewById(R.id.exploreFoodRecycler);
         topHorizontal.setAdapter(horizontalFoodAdapter);
         topHorizontal.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        verticalUserCommentAdapter = new VerticalUserCommentAdapter(this,userList);
-        bottomVertical = findViewById(R.id.userCommentRecycler);
-        bottomVertical.setAdapter(verticalUserCommentAdapter);
-        bottomVertical.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        //verticalUserCommentAdapter = new VerticalUserCommentAdapter(this,userList);
+        //bottomVertical.setAdapter(verticalUserCommentAdapter);
+        //bottomVertical.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
 
     }
+
+
 
 
 }

@@ -26,10 +26,11 @@ public class FirebaseDb{
     private FirebaseDatabase db;
     private DatabaseReference mDatabase;
     static String nationality;
-
+    ArrayList<User> tempList;
     private FirebaseDb() {
         db = FirebaseDatabase.getInstance();
         mDatabase = db.getReference();
+        tempList = new ArrayList<>();
     }
 
     public static FirebaseDb getInstance(){
@@ -137,28 +138,6 @@ public class FirebaseDb{
         return nationality;
     }
 
-    public ArrayList<User> getUserCommentList(final String foodName){
-        final ArrayList<User> tempList = new ArrayList<>();
-        getCommentList(foodName, new OnGetDataListener() {
-            @Override
-            public void onSuccess(User u) {
-                Log.d("syDebug", "User : " + u.getUsername() + ": " + u.getComment() + "\n");
-                tempList.add(u);
-            }
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
-            }
-        });
-        return tempList;
-    }
-
     public void getCommentList(final String foodName, final OnGetDataListener listener) {
         listener.onStart();
         DatabaseReference myCommunity = db.getReference("MyCommunity");
@@ -166,19 +145,7 @@ public class FirebaseDb{
         foods.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(foodName).exists()){
-                    DataSnapshot food = dataSnapshot.child(foodName);
-                    for(DataSnapshot ds: food.getChildren()){
-                        if(!ds.getKey().equals("image")
-                                && !ds.getKey().equals("url")
-                                && !ds.getKey().equals("nationality")){
-                            User u = new User();
-                            u.setUsername(ds.getKey());
-                            u.setComment(ds.getValue().toString());
-                            listener.onSuccess(u);
-                        }
-                    }
-                }
+                listener.onSuccess(dataSnapshot);
             }
 
             @Override
@@ -188,10 +155,17 @@ public class FirebaseDb{
         });
     }
 
+    public ArrayList<User> getTempList() {
+        return tempList;
+    }
+
+    public void setTempList(ArrayList<User> tempList) {
+        this.tempList = tempList;
+    }
 
     public interface OnGetDataListener {
         //this is for callbacks
-        void onSuccess(User u);
+        void onSuccess(DataSnapshot dataSnapshot);
         void onStart();
         void onFailure();
     }
