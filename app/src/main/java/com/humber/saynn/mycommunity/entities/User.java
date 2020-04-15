@@ -9,6 +9,8 @@ public class User {
     private List<String> nationalities;
     private List<String> communities;
 
+    public User(){}
+
     public User(String username, String comment) {
         new User(username,comment,null,null);
     }

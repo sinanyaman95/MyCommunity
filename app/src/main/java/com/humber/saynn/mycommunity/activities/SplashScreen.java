@@ -21,9 +21,9 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        FirebaseDb db = FirebaseDb.getInstance();
+        /*FirebaseDb db = FirebaseDb.getInstance();
         FoodContent fc = FoodContent.getInstance();
-        db.checkFoodsExist(fc.getFoodList());
+        db.checkFoodsExist(fc.getFoodList());*/
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

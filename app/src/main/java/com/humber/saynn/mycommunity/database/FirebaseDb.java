@@ -1,5 +1,6 @@
 package com.humber.saynn.mycommunity.database;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
@@ -9,11 +10,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.activities.ExploreActivity;
 import com.humber.saynn.mycommunity.activities.MainActivity;
+import com.humber.saynn.mycommunity.adapters.VerticalUserCommentAdapter;
 import com.humber.saynn.mycommunity.entities.Food;
+import com.humber.saynn.mycommunity.entities.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 
 import androidx.annotation.NonNull;
 
@@ -21,10 +26,8 @@ public class FirebaseDb{
     private FirebaseDatabase db;
     private DatabaseReference mDatabase;
     static String nationality;
-    static HashMap<String,String> userComments;
 
     private FirebaseDb() {
-        userComments = new HashMap<>();
         db = FirebaseDatabase.getInstance();
         mDatabase = db.getReference();
     }
@@ -134,16 +137,47 @@ public class FirebaseDb{
         return nationality;
     }
 
-    public void fillUserComments(final String foodName){
-        DatabaseReference dr = db
-                .getReference("MyCommunity")
-                .child("Foods")
-                .child(foodName);
-        dr.addListenerForSingleValueEvent(new ValueEventListener() {
+    public ArrayList<User> getUserCommentList(final String foodName){
+        final ArrayList<User> tempList = new ArrayList<>();
+        getCommentList(foodName, new OnGetDataListener() {
+            @Override
+            public void onSuccess(User u) {
+                Log.d("syDebug", "User : " + u.getUsername() + ": " + u.getComment() + "\n");
+                tempList.add(u);
+            }
+
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
+        return tempList;
+    }
+
+    public void getCommentList(final String foodName, final OnGetDataListener listener) {
+        listener.onStart();
+        DatabaseReference myCommunity = db.getReference("MyCommunity");
+        DatabaseReference foods = myCommunity.child("Foods");
+        foods.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-
+                if(dataSnapshot.child(foodName).exists()){
+                    DataSnapshot food = dataSnapshot.child(foodName);
+                    for(DataSnapshot ds: food.getChildren()){
+                        if(!ds.getKey().equals("image")
+                                && !ds.getKey().equals("url")
+                                && !ds.getKey().equals("nationality")){
+                            User u = new User();
+                            u.setUsername(ds.getKey());
+                            u.setComment(ds.getValue().toString());
+                            listener.onSuccess(u);
+                        }
+                    }
                 }
             }
 
@@ -154,4 +188,11 @@ public class FirebaseDb{
         });
     }
 
+
+    public interface OnGetDataListener {
+        //this is for callbacks
+        void onSuccess(User u);
+        void onStart();
+        void onFailure();
+    }
 }
