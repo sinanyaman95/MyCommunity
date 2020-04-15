@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.humber.saynn.mycommunity.R;
@@ -28,15 +29,17 @@ public class ExploreActivity extends AppCompatActivity {
     String foodName;
     FirebaseDb db;
     ArrayList<User> userList;
+    TextView exploreFoodName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
         db= FirebaseDb.getInstance();
-
+        exploreFoodName = findViewById(R.id.exploreFoodName);
         Intent mainIntent = getIntent();
         if(mainIntent.hasExtra("food")) foodName = mainIntent.getStringExtra("food");
+        exploreFoodName.setText(foodName);
         bottomVertical = findViewById(R.id.userCommentRecycler);
         db.getCommentList(foodName, new FirebaseDb.OnGetDataListener() {
             @Override

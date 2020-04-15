@@ -60,6 +60,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
             public void onClick(View v) {
                 Intent i = new Intent(ctx.getApplicationContext(), ExploreActivity.class);
                 i.putExtra("food",holder.food.getDescription());
+                i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 ctx.startActivity(i);
             }
         });
