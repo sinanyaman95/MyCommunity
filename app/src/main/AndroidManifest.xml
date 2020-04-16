@@ -12,9 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.AddRestaurant"
-            android:theme="@style/AppTheme.PopUpTheme"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        android:name=".GlobalApplication">
+        <activity android:name=".activities.UserNewComment"></activity>
+        <activity
+            android:name=".activities.AddRestaurant"
+            android:theme="@style/AppTheme.PopUpTheme" />
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

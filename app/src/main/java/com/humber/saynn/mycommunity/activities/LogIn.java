@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.humber.saynn.mycommunity.GlobalApplication;
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.database.FirebaseDb;
 
@@ -100,6 +101,8 @@ public class LogIn extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(),"Login can't be completed.",Toast.LENGTH_SHORT).show();
                             }else{
                                 Intent i = new Intent(getApplicationContext(), ChooseCommunity.class);
+                                ((GlobalApplication)getApplicationContext())
+                                        .setUserEmail(emailEditText.getText().toString());
                                 i.putExtra(USER_EMAIL,emailEditText.getText().toString());;
                                 db.checkUserExists(emailEditText.getText().toString());
                                 startActivity(i);

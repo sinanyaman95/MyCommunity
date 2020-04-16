@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.humber.saynn.mycommunity.R;
+import com.humber.saynn.mycommunity.database.FirebaseDb;
 import com.humber.saynn.mycommunity.entities.Food;
 import com.humber.saynn.mycommunity.entities.FoodContent;
 
@@ -61,11 +62,14 @@ public class AddRestaurant extends AppCompatActivity {
     private void addRestaurant() {
         String name = nameText.getText().toString();
         String url = urlText.getText().toString();
-        //TODO: convert bitmap to drawable
+
         int image = R.drawable.fried_chicken;
         Food f = new Food(name,image,url);
         FoodContent fc = FoodContent.getInstance();
         fc.addFood(f);
+        /*//TODO: call this once you handle nationality
+        FirebaseDb db = FirebaseDb.getInstance();
+        db.addFood(f);*/
         startActivity(new Intent(getApplicationContext(),FoodBlog.class));
     }
 

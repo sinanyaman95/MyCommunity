@@ -89,7 +89,7 @@ public class FirebaseDb{
         });
     }
 
-    private String getEmailAddress(String email) {
+    public static String getEmailAddress(String email) {
         int indexAt = email.indexOf('@');
         if(indexAt != -1){
             return email.substring(0,indexAt);

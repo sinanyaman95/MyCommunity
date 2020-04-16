@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
+import com.humber.saynn.mycommunity.GlobalApplication;
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.adapters.HorizontalFoodAdapter;
 import com.humber.saynn.mycommunity.adapters.VerticalUserCommentAdapter;
@@ -35,6 +37,8 @@ public class ExploreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore);
+
+        Log.d("syDebug", "Explore Activity: " + ((GlobalApplication)getApplicationContext()).getUserEmail() );
         db= FirebaseDb.getInstance();
         exploreFoodName = findViewById(R.id.exploreFoodName);
         Intent mainIntent = getIntent();
@@ -58,7 +62,7 @@ public class ExploreActivity extends AppCompatActivity {
                         }
                     }
                 }
-                verticalUserCommentAdapter = new VerticalUserCommentAdapter(getApplicationContext(),userList);
+                verticalUserCommentAdapter = new VerticalUserCommentAdapter(getApplicationContext(),userList, foodName);
                 bottomVertical.setAdapter(verticalUserCommentAdapter);
                 bottomVertical.setLayoutManager(
                         new LinearLayoutManager(getApplicationContext(),
