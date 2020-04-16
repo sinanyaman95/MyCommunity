@@ -25,7 +25,7 @@ import androidx.annotation.NonNull;
 public class FirebaseDb{
     private FirebaseDatabase db;
     private DatabaseReference mDatabase;
-    static String nationality;
+    static ArrayList<String> nationality = new ArrayList<>();
     ArrayList<User> tempList;
     private FirebaseDb() {
         db = FirebaseDatabase.getInstance();
@@ -118,8 +118,6 @@ public class FirebaseDb{
                     .child("Preferences")
                     .child(s).setValue("true");
         }
-
-
     }
 
     public void addCommunity(String s, String email) {
@@ -131,7 +129,7 @@ public class FirebaseDb{
                     .child("Nationalities")
                     .child(s).setValue("true");
         }
-        nationality = s;
+        nationality.add(s);
     }
 
     public void addComment(String foodName, User u){
@@ -143,7 +141,7 @@ public class FirebaseDb{
                 .updateChildren(userCommentMap);
     }
 
-    public String getNationality() {
+    public ArrayList<String> getNationality() {
         return nationality;
     }
 

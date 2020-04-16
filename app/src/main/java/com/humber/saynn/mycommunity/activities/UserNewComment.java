@@ -53,6 +53,7 @@ public class UserNewComment extends AppCompatActivity {
                 addNewComment();
                 Intent i = new Intent(getApplicationContext(),ExploreActivity.class);
                 i.putExtra("food",foodNameStr);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(i);
             }
         });

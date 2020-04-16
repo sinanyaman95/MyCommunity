@@ -36,16 +36,18 @@ public class HorizontalFoodFragment extends Fragment {
     private ArrayList<Food> fixFoodList() {
         ArrayList<Food> foodList = FoodContent.getInstance().getFoodList();
         ArrayList<Food> tempList = new ArrayList<>();
-        String nationality = getUserNationality();
-        for(Food f: foodList){
-            if(f.getNationality().equalsIgnoreCase(nationality)){
-                tempList.add(f);
+        ArrayList<String> nationality = getUserNationality();
+        for(String s : nationality){
+            for(Food f: foodList){
+                if(f.getNationality().equalsIgnoreCase(s)){
+                    tempList.add(f);
+                }
             }
         }
         return tempList;
     }
 
-    private String getUserNationality() {
+    private ArrayList<String> getUserNationality() {
         return db.getNationality();
     }
 

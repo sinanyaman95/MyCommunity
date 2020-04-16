@@ -67,7 +67,7 @@ public class VerticalUserCommentAdapter extends RecyclerView.Adapter<VerticalUse
                     Toast.makeText(v.getContext(),"Please be kind in your review",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(ctx, UserNewComment.class);
                     i.putExtra("foodName",foodName);
-                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
                     ctx.startActivity(i);
                 }
             });
