@@ -101,7 +101,7 @@ public class AddRestaurant extends AppCompatActivity{
             FirebaseDb db = FirebaseDb.getInstance();
             db.addFood(f);
         }
-        Intent i = new Intent(getApplicationContext(),FoodBlog.class);
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(i);
     }
