@@ -54,6 +54,20 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
         holder.url = tempFood.getUrl();
         String url = holder.url;
         final Uri location= Uri.parse(url);
+        String foodCountry = tempFood.getNationality();
+        if(foodCountry.equalsIgnoreCase("turkish")){
+            holder.foodFlag.setImageResource(R.drawable.turkish_flag);
+        }else if(foodCountry.equalsIgnoreCase("indian")){
+            holder.foodFlag.setImageResource(R.drawable.indian_flag);
+        }else if(foodCountry.equalsIgnoreCase("japanese")){
+            holder.foodFlag.setImageResource(R.drawable.japanese_flag);
+        }else if(foodCountry.equalsIgnoreCase("chinese")){
+            holder.foodFlag.setImageResource(R.drawable.chinese_flag);
+        }else if(foodCountry.equalsIgnoreCase("pakistani")){
+            holder.foodFlag.setImageResource(R.drawable.pakistani_flag);
+        }else{
+            holder.foodFlag.setImageResource(R.drawable.world_flag);
+        }
 
         holder.foodCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +100,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
 
         CardView foodCardView;
         ImageView foodImage;
+        ImageView foodFlag;
         TextView descriptionText;
         String url;
         Food food;
@@ -97,6 +112,7 @@ public class HorizontalFoodAdapter extends RecyclerView.Adapter<HorizontalFoodAd
             foodImage = itemView.findViewById(R.id.foodImage);
             descriptionText = itemView.findViewById(R.id.foodText);
             foodCardView = itemView.findViewById(R.id.foodCardView);
+            foodFlag = itemView.findViewById(R.id.foodFlag);
 
         }
     }
