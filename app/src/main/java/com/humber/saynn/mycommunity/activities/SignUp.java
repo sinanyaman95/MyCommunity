@@ -71,7 +71,8 @@ public class SignUp extends AppCompatActivity {
                             if(!task.isSuccessful()){
                                 Toast.makeText(getApplicationContext(),task.getException()+"",Toast.LENGTH_SHORT).show();
                             }else{
-                                Intent i = new Intent(getApplicationContext(),ChooseCommunity.class);
+                                Intent i = new Intent(getApplicationContext(),LogIn.class);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                 startActivity(i);
                             }
                         }
