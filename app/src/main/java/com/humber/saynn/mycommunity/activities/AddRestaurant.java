@@ -9,10 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.humber.saynn.mycommunity.R;
 import com.humber.saynn.mycommunity.database.FirebaseDb;
@@ -21,12 +26,15 @@ import com.humber.saynn.mycommunity.entities.FoodContent;
 
 import java.io.IOException;
 
-public class AddRestaurant extends AppCompatActivity {
+public class AddRestaurant extends AppCompatActivity{
     public static final int PICTURE_REQUEST_CODE = 99;
     EditText nameText, urlText;
     TextView photoText;
     Button done;
     Bitmap bitmap;
+    Spinner dropdown;
+    String foodCountry;
+    String[] nationalities = {"turkish","indian","japanese","chinese","pakistani","general"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,25 @@ public class AddRestaurant extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int) (width*0.9), (int) (height*0.7));
+
+
+        dropdown = findViewById(R.id.countryDropdown);
+        ArrayAdapter<String> dropdownAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item,
+                nationalities);
+        dropdownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropdown.setAdapter(dropdownAdapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                foodCountry = nationalities[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         nameText = findViewById(R.id.foodNameText);
         urlText = findViewById(R.id.foodURLText);
@@ -64,13 +91,19 @@ public class AddRestaurant extends AppCompatActivity {
         String url = urlText.getText().toString();
 
         int image = R.drawable.fried_chicken;
-        Food f = new Food(name,image,url);
-        FoodContent fc = FoodContent.getInstance();
-        fc.addFood(f);
-        /*//TODO: call this once you handle nationality
-        FirebaseDb db = FirebaseDb.getInstance();
-        db.addFood(f);*/
-        startActivity(new Intent(getApplicationContext(),FoodBlog.class));
+        Food f;
+        if(!foodCountry.equals("")){
+            Log.d("syDebug", "Country: " + foodCountry );
+            f = new Food(name,image,url,foodCountry);
+            FoodContent fc = FoodContent.getInstance();
+            fc.addFood(f);
+            //TODO: call this once you handle nationality
+            FirebaseDb db = FirebaseDb.getInstance();
+            db.addFood(f);
+        }
+        Intent i = new Intent(getApplicationContext(),FoodBlog.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(i);
     }
 
     private void chooseImageFile(){
@@ -92,4 +125,5 @@ public class AddRestaurant extends AppCompatActivity {
             }
         }
     }
+
 }

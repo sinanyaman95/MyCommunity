@@ -50,6 +50,13 @@
             android:layout_marginEnd="100dp"/>
 
 
+        <Spinner
+            android:id="@+id/countryDropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"/>
+
         <TextView
             android:id="@+id/foodImageText"
             android:layout_width="wrap_content"
