@@ -134,6 +134,15 @@ public class FirebaseDb{
         nationality = s;
     }
 
+    public void addComment(String foodName, User u){
+        HashMap<String, Object> userCommentMap = new HashMap<>();
+        userCommentMap.put(u.getUsername(),u.getComment());
+        mDatabase.child("MyCommunity")
+                .child("Foods")
+                .child(foodName)
+                .updateChildren(userCommentMap);
+    }
+
     public String getNationality() {
         return nationality;
     }
